@@ -127,3 +127,14 @@ print(knn_report)
 from sklearn.metrics import accuracy_score
 knn_acc = accuracy_score(y_test,y_hat);
 print(knn_acc);
+
+X=ndf[['pclass', 'age', 'sibsp', 'parch', 'female', 'male',
+       'town_C', 'town_Q', 'town_S']]
+data = pd.DataFrame({'pclass':[1],'age':[26],'sibsp':[0],'parch':[0],'female':[0],'male':[1],'town_C':[1],'town_Q':[0],'town_S':[0] })
+#data = pd.DataFrame({'pclass':[3],'age':[32],'sibsp':[0],'parch':[0],'female':[0],'male':[1],'town_C':[0],'town_Q':[1],'town_S':[0] })
+data1 = pd.concat([X,data]);
+print(data1);
+X = preprocessing.StandardScaler().fit(data1).transform(data1)
+y_hat2 = knn.predict(X)
+print(y_hat2)
+print(y_hat2[len(y_hat2)-1])
